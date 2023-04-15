@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/conde-test/static/css/main.8b15cd00.css",
-    "main.js": "/conde-test/static/js/main.8aa528b6.js",
+    "main.js": "/conde-test/static/js/main.925ff091.js",
     "index.html": "/conde-test/index.html",
     "main.8b15cd00.css.map": "/conde-test/static/css/main.8b15cd00.css.map",
-    "main.8aa528b6.js.map": "/conde-test/static/js/main.8aa528b6.js.map"
+    "main.925ff091.js.map": "/conde-test/static/js/main.925ff091.js.map"
   },
   "entrypoints": [
     "static/css/main.8b15cd00.css",
-    "static/js/main.8aa528b6.js"
+    "static/js/main.925ff091.js"
   ]
 }
