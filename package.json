@@ -2,7 +2,7 @@
     "name": "hexa-coder",
     "version": "0.1.0",
     "private": true,
-    "homepage": "https://iankitjoshi.github.io/conde-test/",
+    "homepage": "https://iankitjoshi.github.io",
     "dependencies": {
         "@emotion/react": "^11.10.6",
         "@emotion/styled": "^11.10.6",
