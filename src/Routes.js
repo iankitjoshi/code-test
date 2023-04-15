@@ -9,7 +9,8 @@ function AppRoute() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<App />} />
+                <Route exact path="/" element={<App />} />
+                <Route exact path="/app" element={<App />} />
             </Routes>
         </BrowserRouter>
     )
