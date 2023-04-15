@@ -36,3 +36,17 @@
     transform: rotate(360deg);
   }
 }
+
+.pointer{
+  cursor: pointer;
+}
+
+.table-container{
+  max-width: 600px;
+  margin: auto;
+  padding-top: 3%;
+}
+
+.input-container{
+  display: flex;
+}
