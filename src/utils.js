@@ -1,14 +1,11 @@
-export const Favkey = 'favorite'
+export const ValidationRegex = {
+  empty: /^\s*$/,
+  email: /^([a-z0-9_\.\+-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/,
+  password: /^(?=.*\d)(?=.*[a-z])(?=.*[!@#$%^&*]).{8,}$/,
+  amount: /^(\d+(\.\d{0,2})?|\.?\d{1,2})$/,
+  number: /^[0-9]{0,15}$/,
+  null: /^null$/,
+  emailVerify: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+};
 
-export const ColumnHead = [
-    { id: 'sno', label: 'S.No.' },
-    { id: 'value', label: 'Name' },
-    { id: Favkey, label: 'Favorite' },
-    { id: 4, label: 'Delete' },
-]
-
-export const colorCode = {
-    yellow: '#F6BE00',
-    red: '#F75D59'
-}
-
+export const buttonClass = 'px-4 py-2 text-base font-medium text-white rounded-md bg-primary-blue'

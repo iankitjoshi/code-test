@@ -1,7 +1,7 @@
 import React from "react";
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
-import App from "./App";
 import './App.css';
+import Jobs from "./Container/Job";
 
 
 function AppRoute() {
@@ -9,8 +9,7 @@ function AppRoute() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route exact path="/" element={<App />} />
-                <Route exact path="/app" element={<App />} />
+                <Route exact path="/" element={<Jobs />} />
             </Routes>
         </BrowserRouter>
     )
