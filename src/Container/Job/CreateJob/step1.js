@@ -1,18 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import InputField from "../../../Common/InputField";
 import { Button } from "@mui/material";
 import { buttonClass } from "../../../utils";
+import jobValidation from "./validation";
 
 function StepOne({ jobDetails, setJobDetails, setStep }) {
     const { jobTitle, companyName, industry, location, remoteType, } = jobDetails
 
+    const [errors, setErrors] = useState({})
+
+    const isValid = () => {
+        const { isValid, errors } = jobValidation({ ...jobDetails });
+        setErrors(errors);
+        return isValid;
+    };
+
     const handleChange = (event) => {
         const { name, value } = event.target
         setJobDetails({ ...jobDetails, [name]: value })
+        setErrors({ ...errors, [name]: '' })
     }
 
     const handleNext = (event) => {
-        setStep(2)
+        if (isValid()) {
+            setStep(2)
+        }
     }
 
     return (
@@ -24,6 +36,7 @@ function StepOne({ jobDetails, setJobDetails, setStep }) {
                 onChange={handleChange}
                 placeholder="ex. UX UI Designer"
                 extraCss="pt-base"
+                error={errors.jobTitle}
                 required
                 fullWidth
 
@@ -35,6 +48,7 @@ function StepOne({ jobDetails, setJobDetails, setStep }) {
                 onChange={handleChange}
                 placeholder="ex. Google"
                 extraCss="pt-base"
+                error={errors.companyName}
                 required
                 fullWidth
 
@@ -46,6 +60,7 @@ function StepOne({ jobDetails, setJobDetails, setStep }) {
                 onChange={handleChange}
                 placeholder="ex. Information Technology"
                 extraCss="pt-base"
+                error={errors.industry}
                 required
                 fullWidth
             />

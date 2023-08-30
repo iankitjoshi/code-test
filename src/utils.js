@@ -9,3 +9,9 @@ export const ValidationRegex = {
 };
 
 export const buttonClass = 'px-4 py-2 text-base font-medium text-white rounded-md bg-primary-blue'
+
+export function isEmptyValidation(fieldValue, fieldName, errorMessage, errors) {
+  if (!ValidationRegex.null.test(fieldValue) && ValidationRegex.empty.test(fieldValue)) {
+    errors[fieldName] = `${errorMessage} is required.`;
+  }
+}

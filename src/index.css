@@ -13,3 +13,9 @@ body {
 code {
   font-family: "Poppins", sans-serif;
 }
+
+.error-message {
+  font-size: 13px;
+  margin-left: 5px;
+  color: #d86161;
+}

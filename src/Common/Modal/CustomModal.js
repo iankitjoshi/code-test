@@ -17,7 +17,15 @@ function CustomModal({ classes, open, children, fullWidth = true, maxWidth = "xs
   return (
     <>
       <Dialog onClose={handleClose} className={classes?.[CustomClassName]} open={open} fullWidth={fullWidth}
-        maxWidth={maxWidth} TransitionComponent={Transition} keepMounted >
+        TransitionComponent={Transition} keepMounted
+        sx={{
+          "& .MuiDialog-container": {
+            "& .MuiPaper-root": {
+              maxWidth: "577px",  // Set your width here
+            },
+          },
+        }}
+      >
         <Fade in={open}>
           <div> {children} </div>
         </Fade>

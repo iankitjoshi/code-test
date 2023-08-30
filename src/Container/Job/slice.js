@@ -34,7 +34,7 @@ export default jobSlice.reducer;
 
 export const getAllJobs = createAsyncThunk(
     "job/getAllJobs",
-    async () => {
+    async (thunkAPI) => {
         try {
             const response = await api.get(jobApi.job);
             return response.data;
