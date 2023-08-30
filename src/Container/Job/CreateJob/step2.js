@@ -1,14 +1,17 @@
 import React from "react";
 import InputField from "../../../Common/InputField";
 import { Radio, RadioGroup, FormControlLabel, FormControl } from '@mui/material';
-import { ValidationRegex, buttonClass } from "../../../utils";
+import { ValidationRegex, buttonClass, initialJobDetails, snackbarMessegeType } from "../../../utils";
 import color from '../../../Theme/color'
 import { useDispatch } from "react-redux";
+import { createJob, editJob, getAllJobs } from "../slice";
+import useCustomSnackbar from '../../../Common/Snackbar/useCustomSnackbar'
 
 const numberData = ['minExperience', 'maxExperience', 'maxSalary', 'minSalary', 'totalEmployee']
 
-function StepTwo({ jobDetails, setJobDetails, setStep }) {
+function StepTwo({ jobDetails, setJobDetails, setStep, setOpen, isEdit, setIsEdit, id }) {
     const dispatch = useDispatch()
+    const { enqueueSnackbar } = useCustomSnackbar()
 
     const { minExperience, maxExperience, maxSalary, minSalary, totalEmployee, applyType } = jobDetails
 
@@ -24,7 +27,25 @@ function StepTwo({ jobDetails, setJobDetails, setStep }) {
     }
 
     const handleSave = () => {
+        if (isEdit) {
+            const jobData = { ...jobDetails, id }
+            dispatch(editJob({ ...jobData })).then(res => {
+                setOpen(false)
+                enqueueSnackbar(`Job Edited Successfully.`, { variant: snackbarMessegeType.success })
+                dispatch(getAllJobs())
+                setJobDetails({ ...initialJobDetails })
+            })
+            setIsEdit(false)
+            return
+        }
 
+
+        dispatch(createJob({ ...jobDetails })).then(res => {
+            setOpen(false)
+            enqueueSnackbar(`Job Created Successfully.`, { variant: snackbarMessegeType.success })
+            dispatch(getAllJobs())
+            setJobDetails({ ...initialJobDetails })
+        })
     }
 
     return (

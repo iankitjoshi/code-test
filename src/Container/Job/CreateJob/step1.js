@@ -1,13 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import InputField from "../../../Common/InputField";
-import { Button } from "@mui/material";
 import { buttonClass } from "../../../utils";
 import jobValidation from "./validation";
 
-function StepOne({ jobDetails, setJobDetails, setStep }) {
-    const { jobTitle, companyName, industry, location, remoteType, } = jobDetails
+function StepOne({ jobDetails, setJobDetails, setStep,errors, setErrors }) {
+    const { jobTitle, companyName, industry, location, remoteType } = jobDetails
 
-    const [errors, setErrors] = useState({})
 
     const isValid = () => {
         const { isValid, errors } = jobValidation({ ...jobDetails });

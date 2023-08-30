@@ -2,16 +2,18 @@ import React from "react";
 import Dialog from "@mui/material/Dialog";
 import { Fade } from "@mui/material";
 import Slide from '@mui/material/Slide';
+import { initialJobDetails } from "../../utils";
 
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-function CustomModal({ classes, open, children, fullWidth = true, maxWidth = "xs", CustomClassName = 'borderContainer', setOpen = () => { }, loginModal = false }) {
+function CustomModal({ classes, open, children, fullWidth = true, CustomClassName = 'borderContainer', setOpen = () => { },setJobDetails }) {
 
   const handleClose = () => {
     setOpen(false)
+    setJobDetails({...initialJobDetails})
   }
 
   return (
@@ -21,7 +23,7 @@ function CustomModal({ classes, open, children, fullWidth = true, maxWidth = "xs
         sx={{
           "& .MuiDialog-container": {
             "& .MuiPaper-root": {
-              maxWidth: "577px",  // Set your width here
+              maxWidth: "577px",
             },
           },
         }}

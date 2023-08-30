@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import jobs from '../Container/Job/slice'
+import jobReducer from '../Container/Job/slice'
 
 export const store = configureStore({
   reducer: {
-    jobs
+    jobsData: jobReducer
   },
 });
