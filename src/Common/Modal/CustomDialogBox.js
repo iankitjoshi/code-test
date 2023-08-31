@@ -6,7 +6,6 @@ import {
   DialogTitle,
   DialogContentText,
   Button,
-  CircularProgress,
 } from "@mui/material";
 import "tailwindcss/tailwind.css";
 
@@ -58,14 +57,14 @@ function CustomDialogBox(props) {
               onClick={handleClose}
               variant="outlined"
               color="error"
-              className="mx-4 my-2 font-semibold text-white w-28 bg-bgcolor hover:bg-bgcolor"
+              className="!mx-4 !my-2 !font-semibold w-28"
             >
               No
             </Button>
             <Button
               onClick={confirmAction}
               variant="outlined"
-              className="mx-4 my-2 font-semibold text-white w-28 bg-primary-blue hover:bg-primary-blue"
+              className="!mx-4 !my-2 !font-semibold w-28"
               disabled={disabledDeleteButton}
             >
               Yes

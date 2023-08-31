@@ -50,16 +50,19 @@ function StepTwo({ jobDetails, setJobDetails, setStep, setOpen, isEdit, setIsEdi
 
     return (
         <>
-            <div className="flex justify-between pt-base">
+            <p className="text-sm font-medium pt-base" > Experience</p>
+            <div className="flex justify-between">
+
                 <InputField
-                    title="Experience"
+                    // title="Experience"
                     value={minExperience}
                     name="minExperience"
                     onChange={handleChange}
                     placeholder="Minimum"
+                    className
                 />
                 <InputField
-                    title="a"
+                    // title="a"
                     value={maxExperience}
                     name="maxExperience"
                     onChange={handleChange}
@@ -67,16 +70,18 @@ function StepTwo({ jobDetails, setJobDetails, setStep, setOpen, isEdit, setIsEdi
                 />
             </div>
 
-            <div className="flex justify-between pt-base">
+            <p className="text-sm font-medium pt-base" > Salary</p>
+
+            <div className="flex justify-between">
                 <InputField
-                    title="Salary"
+                    // title="Salary"
                     value={minSalary}
                     name="minSalary"
                     onChange={handleChange}
                     placeholder="Minimum"
                 />
                 <InputField
-                    title={'a'}
+                    // title={'   '}
                     value={maxSalary}
                     name="maxSalary"
                     onChange={handleChange}

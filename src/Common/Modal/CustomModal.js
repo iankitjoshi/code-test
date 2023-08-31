@@ -9,11 +9,12 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-function CustomModal({ classes, open, children, fullWidth = true, CustomClassName = 'borderContainer', setOpen = () => { },setJobDetails }) {
+function CustomModal({ classes, open, children, fullWidth = true, CustomClassName = 'borderContainer', setOpen = () => { }, setJobDetails, setIsEdit }) {
 
   const handleClose = () => {
     setOpen(false)
-    setJobDetails({...initialJobDetails})
+    setIsEdit(false)
+    setJobDetails({ ...initialJobDetails })
   }
 
   return (

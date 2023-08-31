@@ -6,7 +6,7 @@ const InputField = ({ extraCss, classes, type, error, fullWidth, list, ...props 
   return (
     <>
       <div className={extraCss ? extraCss : null}>
-        {props.title && <p className="text-sm font-medium" > {props.title} <span className=" text-error" > {props?.required && ' *'}</span> </p>}
+        <p className="text-sm font-medium" > {props.title} <span className=" text-error" > {props?.required && ' *'}</span> </p>
         <TextField
           fullWidth={fullWidth}
           id="standard-basic"
@@ -17,7 +17,7 @@ const InputField = ({ extraCss, classes, type, error, fullWidth, list, ...props 
           size="small"
           sx={{
             "& input::placeholder": {
-              fontsize: "20px"
+              fontsize: "10px"
             }
           }}
           {...props}

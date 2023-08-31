@@ -9,6 +9,8 @@ export default {
     "primary-blue": '#1597E4',
     "border-gray": '#DADEDF',
     'bgcolor': '#D8D8D8',
+    'bg-delete' : '#F3CFCF',
+    'bg-edit' : '#B8DFF6',
     primary: {
         main: '#1597E4',
     },
