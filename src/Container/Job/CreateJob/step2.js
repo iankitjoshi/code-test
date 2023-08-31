@@ -3,9 +3,10 @@ import InputField from "../../../Common/InputField";
 import { Radio, RadioGroup, FormControlLabel, FormControl } from '@mui/material';
 import { ValidationRegex, buttonClass, initialJobDetails, snackbarMessegeType } from "../../../utils";
 import color from '../../../Theme/color'
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { createJob, editJob, getAllJobs } from "../slice";
 import useCustomSnackbar from '../../../Common/Snackbar/useCustomSnackbar'
+import CustomLoader from "../../../Common/CustomLoader/CustomLoader";
 
 const numberData = ['minExperience', 'maxExperience', 'maxSalary', 'minSalary', 'totalEmployee']
 
@@ -14,6 +15,7 @@ function StepTwo({ jobDetails, setJobDetails, setStep, setOpen, isEdit, setIsEdi
     const { enqueueSnackbar } = useCustomSnackbar()
 
     const { minExperience, maxExperience, maxSalary, minSalary, totalEmployee, applyType } = jobDetails
+    const { isLoading } = useSelector(state => state?.jobsData || {}) || {}
 
     const handleChange = (event) => {
         const { name, value } = event.target
@@ -50,11 +52,11 @@ function StepTwo({ jobDetails, setJobDetails, setStep, setOpen, isEdit, setIsEdi
 
     return (
         <>
+            {isLoading && <CustomLoader />}
             <p className="text-sm font-medium pt-base" > Experience</p>
             <div className="flex justify-between">
 
                 <InputField
-                    // title="Experience"
                     value={minExperience}
                     name="minExperience"
                     onChange={handleChange}
@@ -62,7 +64,6 @@ function StepTwo({ jobDetails, setJobDetails, setStep, setOpen, isEdit, setIsEdi
                     className
                 />
                 <InputField
-                    // title="a"
                     value={maxExperience}
                     name="maxExperience"
                     onChange={handleChange}
@@ -74,14 +75,12 @@ function StepTwo({ jobDetails, setJobDetails, setStep, setOpen, isEdit, setIsEdi
 
             <div className="flex justify-between">
                 <InputField
-                    // title="Salary"
                     value={minSalary}
                     name="minSalary"
                     onChange={handleChange}
                     placeholder="Minimum"
                 />
                 <InputField
-                    // title={'   '}
                     value={maxSalary}
                     name="maxSalary"
                     onChange={handleChange}
@@ -100,7 +99,7 @@ function StepTwo({ jobDetails, setJobDetails, setStep, setOpen, isEdit, setIsEdi
             />
 
             <FormControl className="!pt-base" >
-                <p className="text-sm font-medium">  Apply type </p>
+                <p className="text-sm font-medium"> Apply type </p>
                 <RadioGroup
                     aria-labelledby="controlled-radio-buttons"
                     name="applyType"

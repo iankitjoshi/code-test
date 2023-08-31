@@ -3,7 +3,7 @@ import InputField from "../../../Common/InputField";
 import { buttonClass } from "../../../utils";
 import jobValidation from "./validation";
 
-function StepOne({ jobDetails, setJobDetails, setStep,errors, setErrors }) {
+function StepOne({ jobDetails, setJobDetails, setStep, errors, setErrors }) {
     const { jobTitle, companyName, industry, location, remoteType } = jobDetails
 
 

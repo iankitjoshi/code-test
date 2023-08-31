@@ -9,13 +9,11 @@ import { SnackbarProvider } from 'notistack';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  // <React.StrictMode>
   <SnackbarProvider maxSnack={1} autoHideDuration={1000} preventDuplicate anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}>
     <Provider store={store}>
       <AppRoute />
     </Provider>
   </SnackbarProvider>
-  // </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
