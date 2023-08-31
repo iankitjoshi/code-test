@@ -19,12 +19,12 @@ function Jobs() {
 
     const { jobs, isLoading } = useSelector(state => state?.jobsData || {}) || {}
 
-    const [open, setOpen] = useState(true)
+    const [open, setOpen] = useState(false)
     const [openDelete, setOpenDelete] = useState(false)
     const [jobDetails, setJobDetails] = useState({ ...initialJobDetails })
     const [errors, setErrors] = useState({})
     const [isEdit, setIsEdit] = useState(false)
-    const [step, setStep] = useState(2)
+    const [step, setStep] = useState(1)
     const [id, setId] = useState('')
 
     useEffect(() => {
@@ -39,7 +39,7 @@ function Jobs() {
     const handleCreateJob = () => {
         setOpen(true)
         setJobDetails({ ...initialJobDetails })
-        // setStep(1)
+        setStep(1)
         setId('')
         setErrors({})
     }
