@@ -99,7 +99,7 @@ function StepTwo({ jobDetails, setJobDetails, setStep, setOpen, isEdit, setIsEdi
             />
 
             <FormControl className="!pt-base" >
-                <p className="text-sm font-medium"> Apply type </p>
+                <p className="text-sm font-medium pb-1"> Apply type </p>
                 <RadioGroup
                     aria-labelledby="controlled-radio-buttons"
                     name="applyType"

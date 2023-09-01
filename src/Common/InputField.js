@@ -6,7 +6,7 @@ const InputField = ({ extraCss, classes, type, error, fullWidth, list, ...props 
   return (
     <>
       <div className={extraCss ? extraCss : null}>
-        <p className="text-sm font-medium" > {props.title} <span className=" text-error" > {props?.required && ' *'}</span> </p>
+        <p className="text-sm font-medium pb-1" > {props.title} <span className=" text-error" > {props?.required && ' *'}</span> </p>
         <TextField
           fullWidth={fullWidth}
           id="standard-basic"
