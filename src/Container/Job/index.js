@@ -1,17 +1,15 @@
-import { Button, Grid } from '@mui/material';
+import { Grid } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import "tailwindcss/tailwind.css";
 import CreateJobs from './CreateJob';
 import CustomModal from '../../Common/Modal/CustomModal';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteJob, getAllJobs } from './slice';
-import { buttonClass, currencyFormat, externalButtonClass, initialJobDetails, snackbarMessegeType } from '../../utils';
+import { buttonClass, currencyFormat, externalButtonClass, initialJobDetails, modalButtonClass, snackbarMessegeType } from '../../utils';
 import CustomLoader from '../../Common/CustomLoader/CustomLoader';
 import useCustomSnackbar from '../../Common/Snackbar/useCustomSnackbar';
 import CustomDialogBox from '../../Common/Modal/CustomDialogBox';
-import DeleteIcon from '@mui/icons-material/Delete';
-import EditIcon from '@mui/icons-material/Edit';
-import color from '../../Theme/color';
+import { TrashIcon, PencilIcon } from '@heroicons/react/24/solid'
 
 function Jobs() {
     const dispatch = useDispatch()
@@ -69,7 +67,7 @@ function Jobs() {
         <div>
             {isLoading && <CustomLoader />}
             <div className="p-5">
-                <Button variant="contained" onClick={handleCreateJob} > Create Job </Button>
+                <button className={modalButtonClass} onClick={handleCreateJob} > Create Job </button>
             </div>
             <CustomModal onClose={handleClose} open={open} setOpen={setOpen} setJobDetails={setJobDetails} setIsEdit={setIsEdit} >
                 <CreateJobs setOpen={setOpen} setJobDetails={setJobDetails} jobDetails={jobDetails}
@@ -84,8 +82,9 @@ function Jobs() {
                             return (
                                 <Grid item xs={6} className='' key={id} >
                                     <div className='relative flex gap-2 px-6 py-4 bg-white rounded-med border-1 border-border-gray'>
-                                        <DeleteIcon className={`absolute top-3 right-3 cursor-pointer rounded-lg p-sm bg-bg-delete`} onClick={() => openDeleteModal(id)} sx={{ color: color.error }} />
-                                        <EditIcon className={`absolute top-3 right-11 cursor-pointer rounded-lg p-sm bg-bg-edit`} onClick={() => handleEditJob(jobs)} sx={{ color: color['primary-blue'] }} />
+
+                                        <TrashIcon className={`absolute top-3 right-3 cursor-pointer rounded-lg p-sm bg-bg-delete h-6 w-6 text-error`} onClick={() => openDeleteModal(id)} />
+                                        <PencilIcon className={`absolute top-3 right-11 cursor-pointer rounded-lg p-sm bg-bg-edit h-6 w-6 text-primary-blue`} onClick={() => handleEditJob(jobs)} />
                                         <img src='https://generation-sessions.s3.amazonaws.com/8061096148f883bef6ad012421e55d43/img/rectangle-1965-2@2x.png' alt={jobTitle} className='h-12 ' />
 
                                         <div>
@@ -98,7 +97,6 @@ function Jobs() {
                                             <p className='mt-2'> {totalEmployee} employees</p>
                                             <button className={applyType === 'externalApply' ? `${externalButtonClass} mt-6` : `${buttonClass} mt-6`} > {applyType === 'externalApply' ? 'External Apply' : 'Apply Now'}</button>
                                         </div>
-
                                     </div>
                                 </Grid>
                             );

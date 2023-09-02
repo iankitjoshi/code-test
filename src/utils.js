@@ -10,6 +10,7 @@ export const ValidationRegex = {
 
 export const buttonClass = 'px-4 py-2 text-base font-medium text-white !rounded-md bg-primary-blue border'
 export const externalButtonClass = 'px-4 py-2 text-base font-medium text-primary-blue !rounded-md border-primary-blue bg-white border-1 border-solid'
+export const modalButtonClass = '!mx-4 !my-2 !font-semibold w-28 bg-primary-blue rounded-md text-white h-10'
 
 export function isEmptyValidation(fieldValue, fieldName, errorMessage, errors) {
   if (!ValidationRegex.null.test(fieldValue) && ValidationRegex.empty.test(fieldValue)) {
@@ -42,4 +43,13 @@ export const initialJobDetails = {
   minSalary: "",
   totalEmployee: "",
   applyType: "",
+}
+
+export const modalProps = {
+  enter: "ease-out duration-300",
+  enterFrom: "opacity-0 scale-95",
+  enterTo: "opacity-100 scale-100",
+  leave: "ease-in duration-200",
+  leaveFrom: "opacity-100 scale-100",
+  leaveTo: "opacity-0 scale-95",
 }

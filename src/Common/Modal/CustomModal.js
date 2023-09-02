@@ -1,15 +1,10 @@
-import React from "react";
-import Dialog from "@mui/material/Dialog";
-import { Fade } from "@mui/material";
-import Slide from '@mui/material/Slide';
-import { initialJobDetails } from "../../utils";
+import React, { Fragment } from "react";
+import { Dialog, Transition } from '@headlessui/react'
+import "tailwindcss/tailwind.css";
+import { initialJobDetails, modalProps } from "../../utils";
+import TransitionChild from "./TransitionChild";
 
-
-const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction="up" ref={ref} {...props} />;
-});
-
-function CustomModal({ classes, open, children, fullWidth = true, CustomClassName = 'borderContainer', setOpen = () => { }, setJobDetails, setIsEdit }) {
+function CustomModal({ open, children, setOpen = () => { }, setJobDetails, setIsEdit }) {
 
   const handleClose = () => {
     setOpen(false)
@@ -19,22 +14,22 @@ function CustomModal({ classes, open, children, fullWidth = true, CustomClassNam
 
   return (
     <>
-      <Dialog onClose={handleClose} className={classes?.[CustomClassName]} open={open} fullWidth={fullWidth}
-        TransitionComponent={Transition} keepMounted
-        sx={{
-          "& .MuiDialog-container": {
-            "& .MuiPaper-root": {
-              maxWidth: "577px",
-            },
-          },
-        }}
-      >
-        <Fade in={open}>
-          <div> {children} </div>
-        </Fade>
-      </Dialog>
+      <Transition appear show={open} as={Fragment}>
+        <Dialog as="div" className="fixed inset-0 z-10 overflow-y-auto" onClose={handleClose} >
+          <div className="min-h-screen px-4 text-center">
+            <TransitionChild />
+
+            <Transition.Child as={Fragment}{...modalProps} >
+              <div className="inline-block w-full max-w-[577px] my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
+                {children}
+              </div>
+            </Transition.Child>
+          </div>
+        </Dialog>
+      </Transition>
     </>
   );
 }
 
 export default CustomModal
+

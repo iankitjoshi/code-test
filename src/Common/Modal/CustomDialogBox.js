@@ -1,13 +1,8 @@
-import React from "react";
-import {
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-  DialogContentText,
-  Button,
-} from "@mui/material";
+import React, { Fragment } from "react";
+import { Dialog, Transition } from '@headlessui/react'
 import "tailwindcss/tailwind.css";
+import TransitionChild from "./TransitionChild";
+import { modalButtonClass, modalProps } from "../../utils";
 
 function CustomDialogBox(props) {
   const {
@@ -16,63 +11,43 @@ function CustomDialogBox(props) {
     title = "Warning",
     dialogText = "Are you sure you want to delete?",
     confirmAction = () => { },
-    disabledDeleteButton = false,
-    isLoading = false,
   } = props;
 
   return (
-    <Dialog
-      open={open}
-      onClose={handleClose}
-      maxWidth="sm"
-      fullWidth={true}
-      className="cus-dialog"
-      sx={{
-        display: "flex",
-        gap: "20px",
-        left: "30%",
-      }}
-    >
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          padding: '10px 30px',
-          gap: '5px',
-          marginTop: '25px'
-        }}
-      >
-        <DialogTitle className="text-xl font-bold" sx={{ padding: "0" }}>
-          {title}
-        </DialogTitle>
-        <DialogContent sx={{ padding: "0" }}>
-          <DialogContentText className="text-lg">
-            {dialogText}
-          </DialogContentText>
-        </DialogContent>
+    <>
+      <Transition appear show={open} as={Fragment}>
+        <Dialog
+          as="div"
+          className="fixed inset-0 z-10 overflow-y-auto"
+          onClose={handleClose}
+        >
+          <div className="min-h-screen px-4 text-center">
+            <TransitionChild />
+            <Transition.Child as={Fragment} {...modalProps} >
 
-        <DialogActions>
-          <div className="dialog-btns">
-            <Button
-              onClick={handleClose}
-              variant="outlined"
-              color="error"
-              className="!mx-4 !my-2 !font-semibold w-28"
-            >
-              No
-            </Button>
-            <Button
-              onClick={confirmAction}
-              variant="outlined"
-              className="!mx-4 !my-2 !font-semibold w-28"
-              disabled={disabledDeleteButton}
-            >
-              Yes
-            </Button>
+              <div className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
+                <Dialog.Title as="h3" className="text-lg font-medium leading-6 text-gray-900" >
+                  {title}
+                </Dialog.Title>
+                <div className="mt-2">
+                  <p className="pt-2 text-sm text-gray-500"> {dialogText} </p>
+                </div>
+
+                <div className="mt-4">
+                  <button onClick={handleClose} variant="outlined" className={modalButtonClass}>
+                    No
+                  </button>
+                  <button onClick={confirmAction} variant="outlined" className={modalButtonClass} >
+                    Yes
+                  </button>
+                </div>
+              </div>
+            </Transition.Child>
           </div>
-        </DialogActions>
-      </div>
-    </Dialog>
+        </Dialog>
+      </Transition>
+    </>
+
   );
 }
 
