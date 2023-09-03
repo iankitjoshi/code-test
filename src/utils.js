@@ -5,6 +5,7 @@ export const ValidationRegex = {
   amount: /^(\d+(\.\d{0,2})?|\.?\d{1,2})$/,
   number: /^[0-9]{0,15}$/,
   null: /^null$/,
+  employe: /^[^-\s]{1}[0-9 -]{0,9}$/,
   emailVerify: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
 };
 

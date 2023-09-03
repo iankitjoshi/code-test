@@ -19,7 +19,7 @@ function StepTwo({ jobDetails, setJobDetails, setStep, setOpen, isEdit, setIsEdi
 
     const handleChange = (event) => {
         const { name, value } = event.target
-        if (numberData.includes(name) && value && !ValidationRegex.amount.test(value)) return
+        if (numberData.includes(name) && value && !ValidationRegex.employe.test(value)) return
         if (numberData.includes(name) && value.length > 12) return
         setJobDetails({ ...jobDetails, [name]: value })
     }
@@ -99,7 +99,7 @@ function StepTwo({ jobDetails, setJobDetails, setStep, setOpen, isEdit, setIsEdi
             />
 
             <FormControl className="!pt-base" >
-                <p className="text-sm font-medium pb-1"> Apply type </p>
+                <p className="pb-1 text-sm font-medium"> Apply type </p>
                 <RadioGroup
                     aria-labelledby="controlled-radio-buttons"
                     name="applyType"
