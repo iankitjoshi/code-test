@@ -23,6 +23,9 @@ module.exports = {
       padding: {
         base: '24px',
         sm: '3px'
+      },
+      maxWidth: {
+        'med': '577px',
       }
     },
   },

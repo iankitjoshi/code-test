@@ -20,7 +20,7 @@ function CustomModal({ open, children, setOpen = () => { }, setJobDetails, setIs
             <TransitionChild />
 
             <Transition.Child as={Fragment}{...modalProps} >
-              <div className="inline-block w-full max-w-[577px] my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
+              <div className="inline-block w-full my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl max-w-med rounded-2xl">
                 {children}
               </div>
             </Transition.Child>
